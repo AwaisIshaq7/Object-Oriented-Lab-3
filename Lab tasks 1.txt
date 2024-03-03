@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Student {
+public:
+    string name;
+    float grade;
+
+    Student(const string& n, float g) : name(n), grade(g) {}
+};
+
+int main() {
+    vector<Student> studentList;
+
+    // Function for displaying student grades. 
+    auto displayGrades = [&]() {
+        cout << "Student Grades \n";
+        for (const auto& student : studentList) {
+            cout << "Name: " << student.name << "\nGrade: " << student.grade << "\n";
+        }
+        cout << "\n";
+        };
+
+    //Initial students
+    studentList.push_back(Student("John", 60));
+    studentList.push_back(Student("Edward", 75));
+    studentList.push_back(Student("Kim", 62));
+
+    displayGrades();
+
+    //Can add more students dynamically
+    studentList.push_back(Student("Rahim", 88));
+    studentList.push_back(Student("David", 97));
+    studentList.push_back(Student("David", 71));
+
+    displayGrades();
+
+    // Modify a student's grade
+    studentList[3].grade = 57;
+    displayGrades();
+
+    return 0;
+}
