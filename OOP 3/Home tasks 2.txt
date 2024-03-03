@@ -1,0 +1,37 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+// Function for adding a new contact
+void addnewContact(map<string, string>& contacts, const string& name, const string& phoneNumber)  //passing by reference
+{
+    contacts[name] = phoneNumber;
+}
+// Function to search for a contact by name
+void searchContact(const map<string, string>& contacts, const string& name) {
+    auto it = contacts.find(name);
+    if (it != contacts.end()) {
+        cout << "Name: " << it->first << "\nPhone Number: " << it->second << "\n";
+    }
+    else {
+        cout << "Contact not found.\n";
+    }
+}
+
+int main() {
+    map<string, string> contacts;
+
+    // To Add contacts
+    addnewContact(contacts, "Merioleona", "353533190");
+    addnewContact(contacts, "Ryley Jr", "035892451");
+    addnewContact(contacts, "Ali Ahmed", "013241421");
+
+    //To Search for a contact
+    searchContact(contacts, "Ryley Jr");
+
+    searchContact(contacts, "Merioleona");
+
+    return 0;
+}
